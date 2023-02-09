@@ -11,9 +11,7 @@ async def ratingsa(c:Client, m:Message):
 
 """
     eklenen = 0
-    puanlar = []
-    for kisi in rating:
-        puanlar.append(rating[kisi])
+    puanlar = [rating[kisi] for kisi in rating]
     puanlar.sort(reverse = True)
     for puan in puanlar:
         for kisi in rating:
@@ -22,5 +20,5 @@ async def ratingsa(c:Client, m:Message):
                 eklenen += 50
                 if eklenen == 30:
                     break
-                
+
     await c.send_message(m.chat.id, metin)

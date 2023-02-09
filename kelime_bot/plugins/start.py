@@ -11,7 +11,10 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 keyboard = InlineKeyboardMarkup([
     [
-        InlineKeyboardButton("➕𝐌ə𝐧𝐢 𝐪𝐫𝐮𝐩𝐚 ə𝐥𝐚𝐯ə 𝐞𝐭➕", url=f"http://t.me/BorzSozGame_bot?startgroup=new")
+        InlineKeyboardButton(
+            "➕𝐌ə𝐧𝐢 𝐪𝐫𝐮𝐩𝐚 ə𝐥𝐚𝐯ə 𝐞𝐭➕",
+            url="http://t.me/BorzSozGame_bot?startgroup=new",
+        )
     ],
     [
         InlineKeyboardButton(" 𝐎𝐰𝐧𝐞𝐫🇦🇿 ", url="t.me/ordayam_5_deqiqeye"),
@@ -19,7 +22,7 @@ keyboard = InlineKeyboardMarkup([
         InlineKeyboardButton("Etiraf Botu", url="t.me/BorzEtirafBot"),
         InlineKeyboardButton("Song Botu", url="t.me/BorzSongBot"),
         InlineKeyboardButton("Etiraflar", url="t.me/BORZEtiraflar"),
-    ]
+    ],
 ])
 
 
@@ -49,42 +52,40 @@ async def help(bot, message):
   await message.reply_photo("https://telegra.ph/file/fbae3dc2b7e5c3863c1d5.jpg",caption=HELP) 
 
 # Oyunu başlat. 
-@Client.on_message(filters.command("oyna")) 
+@Client.on_message(filters.command("oyna"))
 async def kelimeoyun(c:Client, m:Message):
-    global oyun
-    aktif = False
-    try:
-        aktif = oyun[m.chat.id]["aktif"]
-        aktif = True
-    except:
-        aktif = False
+  global oyun
+  aktif = False
+  try:
+      aktif = oyun[m.chat.id]["aktif"]
+      aktif = True
+  except:
+      aktif = False
 
-    if aktif:
-        await m.reply("**❗ Qrupunuzda  oyun artıq davam edir ✍🏻 \n Oyunu dayandırmaq üçün /dayan yaza bilərsiniz")
-    else:
-        await m.reply(f"**{m.from_user.mention}** Tərəfindən! \nSöz Tapma Oyunu Başladı .\n\nUğurlar !", reply_markup=kanal)
-        
-        oyun[m.chat.id] = {"kelime":kelime_sec()}
-        oyun[m.chat.id]["aktif"] = True
-        oyun[m.chat.id]["round"] = 1
-        oyun[m.chat.id]["kec"] = 0
-        oyun[m.chat.id]["oyuncular"] = {}
-        
-        kelime_list = ""
-        kelime = list(oyun[m.chat.id]['kelime'])
-        shuffle(kelime)
-        
-        for harf in kelime:
-            kelime_list+= harf + " "
-        
-        text = f"""
+  if aktif:
+    await m.reply("**❗ Qrupunuzda  oyun artıq davam edir ✍🏻 \n Oyunu dayandırmaq üçün /dayan yaza bilərsiniz")
+  else:
+    await m.reply(f"**{m.from_user.mention}** Tərəfindən! \nSöz Tapma Oyunu Başladı .\n\nUğurlar !", reply_markup=kanal)
+
+    oyun[m.chat.id] = {
+        "kelime": kelime_sec(),
+        "aktif": True,
+        "round": 1,
+        "kec": 0,
+        "oyuncular": {},
+    }
+    kelime = list(oyun[m.chat.id]['kelime'])
+    shuffle(kelime)
+
+    kelime_list = "".join(f"{harf} " for harf in kelime)
+    text = f"""
 🎯 Raund : {oyun[m.chat.id]['round']}/100 
 📝 Söz :   <code>{kelime_list}</code>
 💰 Qazandığın Xal: 50
 🔎 İpucu: 1. {oyun[m.chat.id]["kelime"][0]}
-✍🏻 Uzunluq : {int(len(kelime_list)/2)} 
+✍🏻 Uzunluq : {len(kelime_list) // 2} 
 
 ✏️ Qarışıq hərflərdən ibarət sözü tapın 
         """
-        await c.send_message(m.chat.id, text)
+    await c.send_message(m.chat.id, text)
         
