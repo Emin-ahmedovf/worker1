@@ -9,14 +9,11 @@ from kelime_bot import OWNER_ID
 async def duyuru(c:Client, m:Message):
     chats = await c.get_messages(OWNER_ID, data_message.message.message_id)
     chats_list = chats.text.split()
-        
-        
+
+
     #----> Mesaj içeriği <----
     mesaj = ""
-    if m.reply_to_message is not None:
-        mesaj = m.reply_to_message.text
-    else:
-        mesaj = m.text[8:]
+    mesaj = m.text[8:] if m.reply_to_message is None else m.reply_to_message.text
     await c.send_message(m.chat.id,f"**Gönerilecek Grup Sayısı:  {len(chats_list)}\nMesajınız:**\n\n__{mesaj}__")
 
 
@@ -40,14 +37,12 @@ async def duyuru(c:Client, m:Message):
 async def fduyuru(c:Client, m:Message):
     chats = await c.get_messages(OWNER_ID, data_message.message_id)
     chats_list = chats.text.split()
-        
 
-    #----> Mesaj içeriği <----
-    if m.reply_to_message is not None:
-        message_id = m.reply_to_message.message_id
-        mesaj = "t.me/" + str(m.chat.username) + "/" + str(message_id)
-    else:
+
+    if m.reply_to_message is None:
         return m.reply("**Mesajı yönlendirme şeklinde duyuru yapmak için yanıtlayın !!**")
+    message_id = m.reply_to_message.message_id
+    mesaj = f"t.me/{str(m.chat.username)}/{str(message_id)}"
     await c.send_message(m.chat.id,f"**Gönerilecek Grup Sayısı:  {len(chats_list)}\nMesajınız: [Tıkla]({mesaj})**", disable_web_page_preview=True)
 
 
