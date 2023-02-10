@@ -1,1 +1,1 @@
-worker: python3 kelime_bot
+worker: node index.js

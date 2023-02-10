@@ -1,32 +1,21 @@
 {
-  "name": "Söz dünyası",
-  "logo": "https://telegra.ph/file/1cc86bcc6714c3a2bb724.jpg",
-  "description": "Telegram söz tap oyun",
+  "name": "Kelime Bot",
+  "description": "Telegram @canpolatgkky.",
   "env": {
-    "API_ID": {
-      "description": "@otomytelegrambot dan api hash api id alınız.",
+    "TOKEN": {
+      "description": "Enter bot token.",
+      "value": ""
+    },
+    "APP_ID": {
+      "description": "Get this value from my.telegram.org! Please do not steal.",
       "value": ""
     },
     "API_HASH": {
-      "description": "@otomytelegrambot dan api hash api id alınız.",
-      "value": ""
-    },
-    "TOKEN": {
-      "description": "@botfather den aldığınız tokeni giriniz",
-      "value": ""
-    },
-    "USERNAME": {
-      "description": "Kullanıcı adınızı giriniz.",
-      "value": ""
-    },
-    "OWNER_ID": {
-      "description": "Bot Sahibinin İD girin.",
+      "description": "Get this value from my.telegram.org! Please do not steal.",
       "value": ""
     }
   },
-  "buildpacks": [
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-python.git"
-    }
-  ]
+  "buildpacks": [{
+    "url": "https://github.com/heroku/heroku-buildpack-python.git"
+  }]
 }

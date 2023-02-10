@@ -1,9 +1,3 @@
-![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=Salam+Mən+BrendÜlvi!)
-</p></p>
+<h4>🔺 Okteto ile Kurulum 🔻</h4> 
 
-
-
-
-## DEPLOY ON HEROKU 🚀
-
-<p align="center"><a href="https://heroku.com/deploy?template=https://github.com/BTBRuslan/SozGame"><img align="center" alt="Heroku" width="52px" src="https://www.nicepng.com/png/full/223-2233246_heroku-logo-salesforce-heroku.png"></p>
+<p align="center"><a href="https://cloud.okteto.com/deploy?repository=https://github.com/Emin-ahmedoff/soztap"><img src="https://img.shields.io/badge/Deploy%20To%20Okteto-informational?style=for-the-badge&logo=Okteto" width="200" height="35.45"/></a></p>
