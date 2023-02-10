@@ -1,10 +1,7 @@
 from time import sleep
 from pyrogram import Client
 import logging
-from dotenv import load_dotenv, set_key, unset_key
-from os import getenv
 
-load_dotenv('config.env')
 
 # THE LOGGING
 logging.basicConfig(
@@ -14,17 +11,17 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 LOGGER = logging.getLogger(__name__)
 
 
-# Hesap
-API_ID = getenv("API_ID")
-API_HASH = getenv("API_HASH")
-TOKEN = getenv("TOKEN")
-USERNAME = getenv("USERNAME")
-OWNER_ID = getenv("OWNER_ID", "")
 
-if OWNER_ID and len(OWNER_ID) and OWNER_ID.isdigit():
-    OWNER_ID = int(OWNER_ID)  # type: ignore
-else:
-    OWNER_ID = None  # type: ignore
+
+
+# Hesap
+API_ID = "7934924"
+API_HASH = "fb8186f10ffd47011e34e721de7524db"
+TOKEN = "5343918157:AAHZX6BQmGBi662Ua38Y-hPK1EUe7_Vn-wI"
+USERNAME = "Tesrrrebot"
+
+
+
 
 # BOT CLIENTİ
 bot = Client(
@@ -34,12 +31,20 @@ bot = Client(
     bot_token=TOKEN,
     plugins=dict(root="kelime_bot/plugins/"),
     workers=16
-)
+    )
 
 
 # Oyun Verileri
-oyun = {}  # type: ignore
+oyun = {}
 
 
 # rating
-rating = {}  # type: ignore
+rating = {}
+
+
+
+
+
+# !!!!!!!!!!!!!! DEĞİŞTİR KESİNLİKLE !!!!!!!!!!!!!!!!
+#      SAHİBİN USER ID'Sİ
+OWNER_ID = 5232474605
